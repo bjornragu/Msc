@@ -148,7 +148,7 @@ summary(bene1_woedata)
 ##################################################################
 ##bene_data
 k=10
-a <- createDataPartition(bene1$TARGET, times = k, p = 0.5, list = FALSE) #https://dataanalyticsblog.com/2016/03/27/splitting-data-into-train-and-test-using-caret-package-in-r/
+a <- createDataPartition(bene1$TARGET, times = k, p = 0.5, list = FALSE) 
 bene1_train1 <- bene1[a[,1],]
 bene1_test1 <- bene1[-a[,1],]
 bene1_train2 <- bene1[a[,2],]
@@ -197,22 +197,6 @@ formula <- TARGET~BLENIA1+BFACTA1+PLASTA1+PDUURA2+CDOELA2+CGEBRA1+BMENSA1+BSPARA
 ####################################################################################
 ##custom summary functions, reference recomends AUC, the PG, and the BS#############
 ####################################################################################
-hmeasure<-function (data, lev = NULL, model = NULL,...) 
-{ 
-  # adaptation of twoClassSummary
-  require(hmeasure)
-  if (!all(levels(data[, "pred"]) == levels(data[, "obs"]))) 
-    stop("levels of observed and predicted data do not match")
-  hObject <- try(hmeasure::HMeasure(data$obs, data[, lev[1]]),silent=TRUE)
-  hmeasH <- if (class(hObject)[1] == "try-error") {
-    NA
-  } else {hObject$metrics[[1]] 
-  }
-  out<-hmeasH 
-  names(out) <- c("hmeasH")
-  out 
-}
-
 Brier <- function(a, p) {
   if (length(a) !=  length(p)) stop("Actual and Predicted need to be equal lengths!")
   temp.df <- data.frame(actual = a, pred = p, range=c(1:length(a)))
