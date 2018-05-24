@@ -121,7 +121,7 @@ levels(uk$Purpose) <- make.names(levels(factor(uk$Purpose)))
 ##################################################################
 ##UK_data
 k=5
-a <- createDataPartition(uk$Censor, times = k, p = 0.5, list = FALSE) #https://dataanalyticsblog.com/2016/03/27/splitting-data-into-train-and-test-using-caret-package-in-r/
+a <- createDataPartition(uk$Censor, times = k, p = 0.5, list = FALSE) 
 uk_train1 <- uk[a[,1],]
 uk_test1 <- uk[-a[,1],]
 uk_train2 <- uk[a[,2],]
@@ -133,7 +133,7 @@ uk_test4 <- uk[-a[,4],]
 uk_train5 <- uk[a[,5],]
 uk_test5 <- uk[-a[,5],]
 
-b <- createDataPartition(uk_woedata$Censor, times = k, p = 0.5, list = FALSE) #https://dataanalyticsblog.com/2016/03/27/splitting-data-into-train-and-test-using-caret-package-in-r/
+b <- createDataPartition(uk_woedata$Censor, times = k, p = 0.5, list = FALSE) 
 uk_woe_train1 <- uk_woedata[b[,1],]
 uk_woe_test1 <- uk_woedata[-b[,1],]
 uk_woe_train2 <- uk_woedata[b[,2],]
