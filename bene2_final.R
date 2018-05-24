@@ -178,7 +178,7 @@ summary(bene2_woedata)
 ##################################################################
 ##bene_data
 k=5
-bene2_a <- createDataPartition(bene2$target, times = k, p = 0.5, list = FALSE) #https://dataanalyticsblog.com/2016/03/27/splitting-data-into-train-and-test-using-caret-package-in-r/
+bene2_a <- createDataPartition(bene2$target, times = k, p = 0.5, list = FALSE) 
 bene2_woe_train1 <- bene2[bene2_a[,1],]
 bene2_woe_test1 <- bene2[-bene2_a[,1],]
 bene2_woe_train2 <- bene2[bene2_a[,2],]
@@ -190,7 +190,7 @@ bene2_woe_test4 <- bene2[-bene2_a[,4],]
 bene2_woe_train5 <- bene2[bene2_a[,5],]
 bene2_woe_test5 <- bene2[-bene2_a[,5],]
 
-bene2_b <- createDataPartition(bene2_woedata$target, times = k, p = 0.5, list = FALSE) #https://dataanalyticsblog.com/2016/03/27/splitting-data-into-train-and-test-using-caret-package-in-r/
+bene2_b <- createDataPartition(bene2_woedata$target, times = k, p = 0.5, list = FALSE)
 bene2_woe_train1 <- bene2_woedata[bene2_b[,1],]
 bene2_woe_test1 <- bene2_woedata[-bene2_b[,1],]
 bene2_woe_train2 <- bene2_woedata[bene2_b[,2],]
@@ -207,22 +207,6 @@ formula <- target~voorsch+mens+epccb+efccb+chyem+leen+proczr+pchem+signemp+newbu
 ####################################################################################
 ##custom summary functions, reference recomends AUC, the PG, and the BS#############
 ####################################################################################
-hmeasure<-function (data, lev = NULL, model = NULL,...) 
-{ 
-  # adaptation of twoClassSummary
-  require(hmeasure)
-  if (!all(levels(data[, "pred"]) == levels(data[, "obs"]))) 
-    stop("levels of observed and predicted data do not match")
-  hObject <- try(hmeasure::HMeasure(data$obs, data[, lev[1]]),silent=TRUE)
-  hmeasH <- if (class(hObject)[1] == "try-error") {
-    NA
-  } else {hObject$metrics[[1]]  #hObject$metrics[c('H')] returns a dataframe, need to return a vector 
-  }
-  out<-hmeasH 
-  names(out) <- c("hmeasH")
-  out 
-}
-
 Brier <- function(a, p) {
   if (length(a) !=  length(p)) stop("Actual and Predicted need to be equal lengths!")
   temp.df <- data.frame(actual = a, pred = p, range=c(1:length(a)))
