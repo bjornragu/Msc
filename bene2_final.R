@@ -1059,7 +1059,7 @@ mean(b2reg_results_DT_ngini)
 mean(b2reg_results_DT_gini)
 
 #########################################
-#######Random forest##################### https://machinelearningmastery.com/tune-machine-learning-algorithms-in-r/ dæmi um function til að gera forloop til að akveða numb trees
+#######Random forest##################### 
 #########################################
 #create a custom function to tune over both meta parameters
 customRF <- list(type = "Classification", library = "randomForest", loop = NULL)
