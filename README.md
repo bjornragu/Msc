@@ -1,1 +1,2 @@
-# Msc. of Statistics KU Leuven
+# Stats
+
